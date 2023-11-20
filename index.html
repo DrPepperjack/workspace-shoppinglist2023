@@ -36,23 +36,25 @@
   <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAzcwgZuLA7dO9g4sQhXQVTUgCo0M8m2qM",
-      authDomain: "grocerylist-91956.firebaseapp.com",
-      databaseURL: "https://grocerylist-91956.firebaseio.com",
-      projectId: "grocerylist-91956",
-      storageBucket: "grocerylist-91956.appspot.com",
-      messagingSenderId: "813812426276",
-      appId: "1:813812426276:web:93e5897af12892ff78dab1",
-      measurementId: "G-VZ83BTR72T"
-    }; 
-    // Initialize Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyCrMcWgqWW57pQVjelCDkR0Lv7oSzEGwSA",
+    authDomain: "database225-311d9.firebaseapp.com",
+    projectId: "database225-311d9",
+    storageBucket: "database225-311d9.appspot.com",
+    messagingSenderId: "255793251648",
+    appId: "1:255793251648:web:d5d8ba983e853e576466a5",
+    measurementId: "G-E8K1CEKPTX"
+  };
+      // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       const db = firebase.firestore();
 
     // Save the list to database
-
-
+    $("#save").click(function(){
+      //testing database
+      $(this).text("Saved");
+      db.collection("shoppinglist").add({item:"apple"});
+    });
   </script>
 
 
