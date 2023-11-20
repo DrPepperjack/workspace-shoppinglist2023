@@ -27,6 +27,7 @@
       <li id="two" class="hot">pine nuts</li>
       <li id="three" class="hot">honey</li>
       <li id="four">balsamic vinegar</li>
+      <li id="five">salt</li>
     </ul>
     <h2 id="save"> Save </h2>
   </div>
@@ -53,7 +54,7 @@
     $("#save").click(function(){
       //testing database
       $(this).text("Saved");
-      db.collection("shoppinglist").add({item:"apple"});
+      db.collection("listproperties").add({listproperties:""});
     });
   </script>
 

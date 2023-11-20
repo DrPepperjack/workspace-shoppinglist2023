@@ -1,10 +1,6 @@
 /*
  * Practice on Elements
  */
-const myarray = [1,2,3,4,5];
-myarray.push(10);
-console.log(myarray);
-
 // get all the hot class elements- change them to cool class
 $(".hot").each(function (){
   //this.setAttribute("class", "cool");
@@ -18,7 +14,9 @@ $("#add").click(addElement);
 // $("two").parent().next().prev().children("p").addClass("border");
 // $("#two").next().next().text("Butterfingers")
 // add a new element by clicking the plus sign
- $("#plus").clickfunction();
+$("#plus").click(function() {
+  addElement();
+});
 // before and after are for siblings
 // append and prepend are for parent
 
@@ -37,22 +35,51 @@ function addElement() {
 }
 
 // bind click with the event handler
-$('li').click(changeStyle);
+document.getElementById('todo').addEventListener('click', changeStyle);
 
 //  click the li element will change the changeStyle
+$('li').click(changeStyle);
+
 //  three style : complete, cool, hot
 function changeStyle() {
-  if ($(this).hasclass(cool));
-    $(this).removeClass();
-  $(this).addClass('complete');
-  ($(this).hasclass('warm'));
-  $(this).removeClass();
+  if ($(this).hasClass('cool')) {
+    $(this).removeClass('cool');
+    $(this).addClass('complete');
+  } else if ($(this).hasClass('hot')) {
+    $(this).removeClass('hot');
+    $(this).addClass('complete');
+  } else {
+    // Assuming 'warm' is a style to be added when not 'cool' or 'hot'
+    $(this).addClass('warm');
+  }
 }
 
 // delete complete element by clicking the trash can
 document.getElementById('remove').addEventListener('click', removeElement);
 
+
 function removeElement() {
   // remove the marked elements  -- element with style complete
   $('li.complete').click(removeElement);
+  // clicking again unchecks the element
+  $('li.complete').click(changeStyle);
+  // remove the marked elements
+  $('li.complete').remove();
 }
+
+// Save the list to database
+$("#save").click(function(){
+  $(this).text("Saved");
+
+  // Loop through each list item to save in the database
+  $('#todo li').each(function(index) {
+    var itemName = $(this).data('itemname'); // Fetching the item name from data attribute
+    var userinput = $(this).text(); // Getting the text input by the user
+    if (itemName && userinput) {
+      db.collection("shoppinglist").add({
+        itemName: itemName,
+        userinput: userinput
+      });
+    }
+  });
+});
