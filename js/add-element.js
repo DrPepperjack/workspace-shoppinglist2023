@@ -14,7 +14,7 @@ $(".hot").each(function() {
 // $("two").parent().next().prev().children("p").addClass("border");
   $("#two").next().next().text("Butterfingers")
 // add a new element by clicking the plus sign
-  $("#plus").click(function() {
+  $("#plus").clickfunction() {}
 // before and after are for siblings
 // append and prepend are for parent
 
@@ -24,17 +24,17 @@ function addElement() {
   
   // whenever the user are done add the element
   
-}
+};
 
 // bind click with the event handler
 
 //  click the li element will change the changeStyle
 //  three style : complete, cool, hot
-function changeStyle() {}
+function changeStyle() {};
 
 // delete complete element by clicking the trash can
 document.getElementById('remove').addEventListener('click', removeElement);
 
 function removeElement() {
   // remove the marked elements  -- element with style complete
-}
+};
