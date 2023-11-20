@@ -14,7 +14,7 @@ $(".hot").each(function() {
 // $("two").parent().next().prev().children("p").addClass("border");
   $("#two").next().next().text("Butterfingers")
 // add a new element by clicking the plus sign
-  $("#plus").clickfunction() {}
+  $("#plus").clickfunction();
 // before and after are for siblings
 // append and prepend are for parent
 
