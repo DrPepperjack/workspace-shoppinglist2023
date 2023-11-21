@@ -61,8 +61,6 @@ document.getElementById('remove').addEventListener('click', removeElement);
 function removeElement() {
   // remove the marked elements  -- element with style complete
   $('li.complete').click(removeElement);
-  // clicking again unchecks the element
-  $('li.complete').click(changeStyle);
   // remove the marked elements
   $('li.complete').remove();
 }
