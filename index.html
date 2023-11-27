@@ -50,11 +50,28 @@
       firebase.initializeApp(firebaseConfig);
       const db = firebase.firestore();
 
+      // Read the Data from Firebase and update the list
+      // $('li').remove();
+
+      db.collection("shoppinglist").get().then((querySnapshot)=>{
+        console.log(querySnapshot);
+        var newlist = "";
+        querySnapshot.forEach((doc) => {
+          var item = doc.data().item;
+          console.log("loading...", item);
+          newlist +="<li class = 'cool'>"+item+"</li>";
+        // $('#todo').append('<li>' + item + '</li>');
+        });
+      });
+
     // Save the list to database
     $("#save").click(function(){
       //testing database
-      $(this).text("Saved");
-      db.collection("listproperties").add({listproperties:""});
+      $('li').each(function(){
+        var value = $(this).text();
+        console.log("Saving", value);
+        db.collection("shoppinglist").add({item: value});
+      });
     });
   </script>
 
