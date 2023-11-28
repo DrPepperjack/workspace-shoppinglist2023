@@ -58,10 +58,10 @@
         var item = doc.data().item;
         console.log("loading...", item);
         newlist += "<li class = 'cool'>" + item + "</li>";
-        // $('#todo').append('<li>' + item + '</li>');
+        $('#todo').append('<li>' + item + '</li>');
       });
     });
-    // $('li').remove();
+    $('li').remove();
     var oldlist = new Array();
     db.collection("shoppinglist").get().then((querySnapshot) => {
       console.log(querySnapshot);
@@ -71,7 +71,7 @@
         oldlist.push(item);
         console.log("loading...", item);
         newlist += "<li class = 'cool'>" + item + "</li>";
-        // $('#todo').append('<li>' + item + '</li>');
+        $('#todo').append('<li>' + item + '</li>');
       });
     });
 

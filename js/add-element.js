@@ -11,7 +11,7 @@ $(".hot").each(function (){
 
 // traverse the elements
 $("#add").click(addElement);
-// $("two").parent().next().prev().children("p").addClass("border");
+$("two").parent().next().prev().children("p").addClass("border");
 // $("#two").next().next().text("Butterfingers")
 // add a new element by clicking the plus sign
 $("#plus").click(function() {
