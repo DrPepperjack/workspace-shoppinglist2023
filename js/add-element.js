@@ -11,7 +11,8 @@ $(".hot").each(function (){
 
 // traverse the elements
 $("#add").click(addElement);
-$("two").parent().next().prev().children("p").addClass("border");
+$("#remove").click(removeElement);
+//$("two").parent().next().prev().children("p").addClass("border");
 // $("#two").next().next().text("Butterfingers")
 // add a new element by clicking the plus sign
 $("#plus").click(function() {
@@ -55,7 +56,7 @@ function changeStyle() {
 }
 
 // delete complete element by clicking the trash can
-document.getElementById('remove').addEventListener('click', removeElement);
+document.getElementById('todo').addEventListener('click', removeElement);
 
 function removeElement() {
   // remove the marked elements  -- element with style complete
