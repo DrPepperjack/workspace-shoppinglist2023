@@ -57,12 +57,15 @@ function changeStyle() {
 // delete complete element by clicking the trash can
 document.getElementById('remove').addEventListener('click', removeElement);
 
-
 function removeElement() {
   // remove the marked elements  -- element with style complete
   $('li.complete').click(removeElement);
   // remove the marked elements
   $('li.complete').remove();
+  // clicking the trash can will remove the element
+  $('li.complete').click(function() {
+    removeElement();
+  });
 }
 
 // Save the list to database
