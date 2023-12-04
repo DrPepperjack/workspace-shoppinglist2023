@@ -27,7 +27,6 @@
       <li id="two" class="hot">pine nuts</li>
       <li id="three" class="hot">honey</li>
       <li id="four">balsamic vinegar</li>
-      <li id="five">salt</li>
     </ul>
     <h2 id="save"> Save </h2>
   </div>
@@ -50,44 +49,45 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
+
     // Read the Data from Firebase and update the list
     var newlist = new Array();
     db.collection("shoppinglist").get().then((querySnapshot) => {
-      console.log(querySnapshot);
-      querySnapshot.forEach((doc) => {
-        var item = doc.data().item;
-        console.log("loading...", item);
-        newlist += "<li class = 'cool'>" + item + "</li>";
-        $('#todo').append('<li>' + item + '</li>');
-      });
-    });
-    $('li').remove();
-    var oldlist = new Array();
-    db.collection("shoppinglist").get().then((querySnapshot) => {
-      console.log(querySnapshot);
       var newlist = "";
       querySnapshot.forEach((doc) => {
-        var item = doc.data().item;
-        oldlist.push(item);
+        console.log(querySnapshot);
+        querySnapshot.forEach((doc) => {
+          var item = doc.data().item;
+          newlist += "<li class = 'cool'>" + item + "</li>";
+
+          //JQuery
+          // $('#todo').append('<li>' + item + '</li>');
+          $("#todo").append(newlist);
+        });
+      });
+    });
+
+    // Remove item from list and database
+    $('li').remove();
+
+    db.collection("shoppinglist").get().then((querySnapshot) => {
+    var newlist = new Array();
+    querySnapshot.forEach((doc) => {
+      var item = doc.data().item;
         console.log("loading...", item);
         newlist += "<li class = 'cool'>" + item + "</li>";
-        $('#todo').append('<li>' + item + '</li>');
+        // $('#todo').append('<li>' + item + '</li>');
       });
     });
 
     // Save the list to database
-    $("#save").click(function () {
+    $("#save").click(function (){
       console.log("Saving...");
-      $('li').each(function () { });
+      $('li').each(function () {
       var value = $(this).text();
-      if (oldlist.includes(value)) {
-        console.log("Already in database", value);
-        console.log("Saving", value);
-      }
-      else {
         console.log("Saving", value);
         db.collection("shoppinglist").add({ item: value });
-      };
+      });
     });
 
     //testing database
